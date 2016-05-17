@@ -7,10 +7,10 @@ Once complete, these manifests should be able to configure a CentOS7 server with
 * A user named bob with sudo access
 * motd upon login to show cowsay and a fortune
 * A Web server using apache and mysql, with a simple PHP file that calls the database
-* A DNS server with A host and 1 CNAME
+* A DNS server with 2 A hosts and 4 CNAMEs
 * NTP configuration for UK timezone
 * SSH public key auth
 * Password logins disabled for root
-* Firewall rule for port 8081 and 22 only
+* Firewall rule for port 8080 and 22 only
 * Make sure rsync backs up apache to another location on same disk
 * A dummy config file /etc/dummyd.conf with configurable settings
