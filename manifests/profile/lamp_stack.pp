@@ -1,12 +1,12 @@
 # A Web server using apache and mysql, with a simple PHP file that calls the database
 ## Modules used: puppetlabs-apache, puppetlabs-mysql
-class lamp_stack {
+class profile::lamp_stack {
 
   class {'apache':
     mpm_module => prefork,
   }
 
-  class {'apache::mod::php':}
+  include 'apache::mod::php'
 
   apache::vhost {'site1':
     port          => 8080,

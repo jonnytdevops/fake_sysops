@@ -1,6 +1,6 @@
 # A user named bob with sudo access
 ## Modules used: puppetlabs-stdlib, saz-sudo
-class user_setup {
+class profile::user_setup {
  
   user {'bob':
     ensure     => present,
@@ -9,7 +9,7 @@ class user_setup {
     shell      => '/bin/bash',
   }
 
-  class {'sudo':}
+  include 'sudo'
   sudo::conf {'bob':
     ensure  => present,
     content => '%bob ALL=(ALL) ALL',

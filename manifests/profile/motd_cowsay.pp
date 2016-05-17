@@ -1,6 +1,6 @@
 # motd upon login to show cowsay and a fortune
 ## Modules used: puppetlabs-motd
-class motd_cowsay {
+class profile::motd_cowsay {
 
   package {'cowsay':
     ensure   => present,
@@ -28,6 +28,5 @@ class motd_cowsay {
 
   class {'motd':
     content => "Welcome to the World of Fake SysOps\n",
-    require => Package['cowsay'],
   }
 }
