@@ -1,6 +1,6 @@
 # A user named bob with sudo access
 ## Modules used: puppetlabs-stdlib, saz-sudo
-class profile::user_setup {
+class fake_sysops::profile::user_setup {
  
   user {'bob':
     ensure     => present,

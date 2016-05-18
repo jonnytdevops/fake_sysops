@@ -1,6 +1,6 @@
 # A Web server using apache and mysql, with a simple PHP file that calls the database
 ## Modules used: puppetlabs-apache, puppetlabs-mysql
-class profile::lamp_stack {
+class fake_sysops::profile::lamp_stack {
 
   class {'apache':
     mpm_module => prefork,

@@ -1,6 +1,6 @@
 # motd upon login to show cowsay and a fortune
 ## Modules used: puppetlabs-motd
-class profile::motd_cowsay {
+class fake_sysops::profile::motd_cowsay {
 
   package {'cowsay':
     ensure   => present,
