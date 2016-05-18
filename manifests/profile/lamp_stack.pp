@@ -29,4 +29,12 @@ class fake_sysops::profile::lamp_stack {
   class {'::mysql::bindings':
     php_enable => true,
   }
+
+  mysql::db {'test_database':
+    user      => 'root',
+    password  => 'super_secret',
+    host      => 'localhost',
+    grant     => ['ALL'],
+    require   => Class['::mysql::server'],
+  }
 }
