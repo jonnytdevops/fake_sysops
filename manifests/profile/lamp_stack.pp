@@ -17,7 +17,7 @@ class fake_sysops::profile::lamp_stack {
   }
 
   file {'/var/www/site1/index.php':
-    content => "<?php\n  mysql_connect('localhost', 'root', 'super_secret') or die('FAILED TO CONNECT TO MYSQL');\n  echo 'Connected to Database';\n?>",
+    content => "<?php\n  mysql_connect('localhost', 'php_user', 'less_super_secret') or die('FAILED TO CONNECT TO MYSQL');\n  echo 'Connected to Database';\n?>",
     require => Apache::Vhost['site1'],
   }
 
@@ -31,8 +31,8 @@ class fake_sysops::profile::lamp_stack {
   }
 
   mysql::db {'test_database':
-    user      => 'root',
-    password  => 'super_secret',
+    user      => 'php_user',
+    password  => 'less_super_secret',
     host      => 'localhost',
     grant     => ['ALL'],
     require   => Class['::mysql::server'],
