@@ -1,4 +1,5 @@
 # A Forwarding DNS server with 2 A hosts and 2 CNAMEs for a fake domain.
+## Modules used: inkblot/bind
 
 class fake_sysops::profile::dns {
 	class {'bind':
