@@ -7,7 +7,7 @@ Once complete, these manifests should be able to configure a CentOS7 server with
 * A user named bob with sudo access
 * motd upon login to show cowsay and a fortune
 * A Web server using apache and mysql, with a simple PHP file that calls the database
-* A DNS server with 2 A hosts and 4 CNAMEs
+* A Forwarding DNS server with 2 A hosts and 2 CNAMEs for a fake domain.
 * NTP configuration for UK timezone
 * SSH public key auth
 * Password logins disabled for root
