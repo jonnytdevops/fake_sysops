@@ -1,0 +1,23 @@
+# Orignally from https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-bind-zone.html
+$ORIGIN fakesysops.me. 
+$TTL 86400 
+@ IN  SOA dns1.fakesysops.me. dns2.fakesysops.me. (
+      2016052001 ; serial                     
+      21600      ; refresh after 6 hours                     
+      3600       ; retry after 1 hour                     
+      604800     ; expire after 1 week                     
+      86400 )    ; minimum TTL of 1 day  
+         
+               
+        IN  NS    dns1.fakesysops.me.      
+        IN  NS    dns2.fakesysops.me.             
+  
+dns1    IN  A     10.0.0.4
+dns2    IN  A     10.0.1.4  
+
+             
+first   IN  A     1.1.1.1        
+second  IN  A     2.2.2.2
+  
+foo     IN  CNAME first
+bar     IN  CNAME second
