@@ -10,7 +10,7 @@ class fake_sysops::profile::dns {
 		zone_type => 'master',
 	}
 
-	file {'fakesysops.me_zone_file':
+	file {"fakesysops.me_zone_file":
 		path 		=> '/var/named/fakesysops.me/fakesysops.me',
 		ensure	=> present,
 		source 	=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
