@@ -8,7 +8,7 @@ class fake_sysops::profile::dns {
 
 	bind::zone {'fakesysops.me':
 		zone_type => 'master',
-		source		=> 'puppet://modules/fake_sysops/dns/fakesysops.me-zone'
+		source		=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone'
 	}
 
 	bind::view {'internal':
