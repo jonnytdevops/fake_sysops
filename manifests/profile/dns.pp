@@ -7,11 +7,10 @@ class fake_sysops::profile::dns {
 	}
 
 	bind::zone {'fakesysops.me':
-		zone_type => 'master',
+		zone_type => 'stub',
 	}
 
-	file {"fakesysops.me_zone_file":
-		path 		=> '/var/named/fakesysops.me/fakesysops.me',
+	file {'/var/named/fakesysops.me/fakesysops.me':
 		ensure	=> present,
 		source 	=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
 		require => Bind::Zone['fakesysops.me'],
