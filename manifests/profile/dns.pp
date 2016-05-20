@@ -7,49 +7,14 @@ class fake_sysops::profile::dns {
 	}
 
 	bind::zone {'fakesysops.me':
+		dynamic		=> false,
 		zone_type => 'master',
-		dynamic 	=> false,
+		source 		=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
 	}
 
 	bind::view {'internal':
 		recursion	=> true,
 		match_destinations => ['127.0.0.1',],
 		zones 						 => ['fakesysops.me',],
-	}
-
-	resource_record { 'first a record':
-		ensure	=> present,
-		record  => 'first.fakesysops.me',
-		type 		=> 'A',
-		data		=> '1.1.1.1',
-		ttl			=> 86400,
-		zone 		=> 'fakesysops.me',
-	}
-
-	resource_record { 'second a record':
-		ensure	=> present,
-		record  => 'second.fakesysops.me',
-		type 		=> 'A',
-		data		=> '2.2.2.2',
-		ttl			=> 86400,
-		zone 		=> 'fakesysops.me',
-	}
-
-	resource_record { 'first cname record':
-		ensure	=> present,
-		record  => 'foo.fakesysops.me',
-		type 		=> 'A',
-		data		=> 'first',
-		ttl			=> 86400,
-		zone 		=> 'fakesysops.me',
-	}
-
-	resource_record { 'second cname record':
-		ensure	=> present,
-		record  => 'bar.fakesysops.me',
-		type 		=> 'A',
-		data		=> 'second',
-		ttl			=> 86400,
-		zone 		=> 'fakesysops.me',
 	}
 }
