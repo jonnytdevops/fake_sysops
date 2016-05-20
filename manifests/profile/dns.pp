@@ -37,7 +37,7 @@ class fake_sysops::profile::dns {
 
 	resource_record { 'foo.fakesysops.me':
 		ensure	=> present,
-		record  => 'foo.fakesysops.me',
+		record  => 'foo',
 		type 		=> 'A',
 		data		=> 'first',
 		ttl			=> 86400,
@@ -46,7 +46,7 @@ class fake_sysops::profile::dns {
 
 	resource_record { 'bar.fakesysops.me':
 		ensure	=> present,
-		record  => 'bar.fakesysops.me',
+		record  => 'bar',
 		type 		=> 'A',
 		data		=> 'second',
 		ttl			=> 86400,
