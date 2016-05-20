@@ -8,7 +8,7 @@ class fake_sysops::profile::dns {
 
 	bind::zone {'fakesysops.me':
 		zone_type => 'master',
-		dynamic 	=> false,
+		dynamic 	=> true,
 	}
 
 	bind::view {'internal':
@@ -17,7 +17,7 @@ class fake_sysops::profile::dns {
 		zones 						 => ['fakesysops.me',],
 	}
 
-	resource_record { 'first a record':
+	resource_record { 'first.fakesysops.me':
 		ensure	=> present,
 		record  => 'first.fakesysops.me',
 		type 		=> 'A',
@@ -26,7 +26,7 @@ class fake_sysops::profile::dns {
 		zone 		=> 'fakesysops.me',
 	}
 
-	resource_record { 'second a record':
+	resource_record { 'second.fakesysops.me':
 		ensure	=> present,
 		record  => 'second.fakesysops.me',
 		type 		=> 'A',
@@ -35,7 +35,7 @@ class fake_sysops::profile::dns {
 		zone 		=> 'fakesysops.me',
 	}
 
-	resource_record { 'first cname record':
+	resource_record { 'foo.fakesysops.me':
 		ensure	=> present,
 		record  => 'foo.fakesysops.me',
 		type 		=> 'A',
@@ -44,7 +44,7 @@ class fake_sysops::profile::dns {
 		zone 		=> 'fakesysops.me',
 	}
 
-	resource_record { 'second cname record':
+	resource_record { 'bar.fakesysops.me':
 		ensure	=> present,
 		record  => 'bar.fakesysops.me',
 		type 		=> 'A',
