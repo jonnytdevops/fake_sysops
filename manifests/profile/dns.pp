@@ -8,13 +8,14 @@ class fake_sysops::profile::dns {
 
 	bind::zone {'fakesysops.me':
 		zone_type => 'stub',
+		source 		=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
 	}
 
-	file {'/var/named/fakesysops.me/fakesysops.me':
-		ensure	=> present,
-		source 	=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
-		require => Bind::Zone['fakesysops.me'],
-	}
+	# file {'/var/named/fakesysops.me/fakesysops.me':
+	# 	ensure	=> present,
+	# 	source 	=> 'puppet:///modules/fake_sysops/dns/fakesysops.me-zone',
+	# 	require => Bind::Zone['fakesysops.me'],
+	# }
 
 	bind::view {'internal':
 		recursion	=> true,
