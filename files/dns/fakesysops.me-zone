@@ -1,4 +1,4 @@
-# Orignally from https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-bind-zone.html
+; Orignally from https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-bind-zone.html
 $ORIGIN fakesysops.me. 
 $TTL 86400 
 @ IN  SOA dns1.fakesysops.me. dns2.fakesysops.me. (
