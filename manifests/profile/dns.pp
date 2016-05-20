@@ -19,7 +19,7 @@ class fake_sysops::profile::dns {
 
 	resource_record { 'first.fakesysops.me':
 		ensure	=> present,
-		record  => 'first.fakesysops.me',
+		record  => 'first',
 		type 		=> 'A',
 		data		=> '1.1.1.1',
 		ttl			=> 86400,
@@ -28,7 +28,7 @@ class fake_sysops::profile::dns {
 
 	resource_record { 'second.fakesysops.me':
 		ensure	=> present,
-		record  => 'second.fakesysops.me',
+		record  => 'second',
 		type 		=> 'A',
 		data		=> '2.2.2.2',
 		ttl			=> 86400,
