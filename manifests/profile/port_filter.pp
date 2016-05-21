@@ -33,6 +33,14 @@ class fake_sysops::profile::port_filter {
     action  => 'accept',
   }
 
+  firewall {'004 allow related/established connections':
+    ensure  => present,
+    proto   => 'tcp',
+    state   => ['RELATED', 'ESTABLISHED'],
+    chain   => 'INPUT',
+    action  => 'accept',
+  }
+
   firewallchain {'INPUT:filter:IPv4':
     ensure  => present,
     policy  => 'drop',
