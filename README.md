@@ -12,7 +12,7 @@ Once complete, these manifests should be able to configure a CentOS7 server with
 * SSH public key auth
 * Password logins disabled for root
 * Firewall rule for port 8080 and 22 only
-* Make sure rsync backs up apache to another location on same disk
+* Make sure rsync backs up apache and mysql to another location on same disk every evening
 * A dummy config file /etc/dummyd.conf with configurable settings
 
 To get started, you could start out by creating and running the following script:

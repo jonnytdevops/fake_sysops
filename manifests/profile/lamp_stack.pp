@@ -37,4 +37,22 @@ class fake_sysops::profile::lamp_stack {
     grant     => ['ALL'],
     require   => Class['::mysql::server'],
   }
+
+  file {['/root/backups_apache/','/root/backups_mysql/']:
+    ensure => directory,
+  }
+
+  cron {'backup apache':
+    command  => 'rsync -a /var/www /root/backups_apache/',
+    user     => 'root',
+    hour     => 2,
+    require  => File['/root/backups_apache/']
+  }
+
+  cron {'backup mysql':
+    command  => 'mysqldump -u php_user -p less_super_secret -h localhost test_database > /root/backups_mysql/test_database.sql',
+    user     => 'root',
+    hour     => 2,
+    require  => File['/root/backups_mysql/']
+  }
 }
