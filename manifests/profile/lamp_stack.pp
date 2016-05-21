@@ -50,7 +50,7 @@ class fake_sysops::profile::lamp_stack {
   }
 
   cron {'backup mysql':
-    command  => 'mysqldump -u php_user -p less_super_secret -h localhost test_database > /root/backups_mysql/test_database.sql',
+    command  => "mysqldump -u php_user -p='less_super_secret' -h localhost test_database > /root/backups_mysql/test_database.sql",
     user     => 'root',
     hour     => 2,
     require  => File['/root/backups_mysql/']
