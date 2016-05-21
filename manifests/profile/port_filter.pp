@@ -35,7 +35,7 @@ class fake_sysops::profile::port_filter {
 
   firewall {'004 allow related/established connections':
     ensure  => present,
-    proto   => 'tcp',
+    proto   => 'all',
     state   => ['RELATED', 'ESTABLISHED'],
     chain   => 'INPUT',
     action  => 'accept',
