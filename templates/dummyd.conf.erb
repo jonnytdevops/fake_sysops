@@ -1,0 +1,18 @@
+# This is the config file to manage DummyD.
+# DummyD is an awesome daemon that does, well, nothing,
+# becuase it's a dummy daemon...
+
+# Mandatory settings
+hostname = <%= @hostname %>
+city = <%= @city %>
+colour = <%= @colour %>
+
+<% if @manage_car -%>
+# Car Configuration
+max_speed = <%= @max_speed %>
+max_rpm = <%= @max_rpm %>
+max_radio_volume = <%= @max_radio_volume %>
+<% if @gps_country -%>
+gps_country = <%= @gps_country %>
+<% end -%>
+<% end -%>
