@@ -1,6 +1,13 @@
 # A Web server using apache and mysql, with a simple PHP file that calls the database
 ## Modules used: puppetlabs-apache, puppetlabs-mysql
-class fake_sysops::profile::lamp_stack {
+class fake_sysops::profile::lamp_stack (
+  $site_name            = 'site1',
+  $site_port            = 8080,
+  $mysql_root_password  = 'super_secret',
+  $database_name        = 'test_database',
+  $database_user        = 'php_user',
+  $database_password    = 'less_super_secret',
+){
 
   class {'apache':
     mpm_module => prefork,
@@ -8,21 +15,21 @@ class fake_sysops::profile::lamp_stack {
 
   include 'apache::mod::php'
 
-  apache::vhost {'site1':
-    port          => 8080,
-    docroot       => '/var/www/site1',
+  apache::vhost {"${site_name}":
+    port          => $site_port,
+    docroot       => "/var/www/${site_name}",
     docroot_owner => 'apache',
     docroot_group => 'apache',
     default_vhost => true,
   }
 
-  file {'/var/www/site1/index.php':
-    content => "<?php\n  mysql_connect('localhost', 'php_user', 'less_super_secret') or die('FAILED TO CONNECT TO MYSQL');\n  echo 'Connected to Database';\n?>",
-    require => Apache::Vhost['site1'],
+  file {"/var/www/${site_name}/index.php":
+    content => template('fake_sysops/index.php.erb'),
+    require => Apache::Vhost["${site_name}"],
   }
 
   class {'::mysql::server':
-    root_password           => 'super_secret',
+    root_password           => $mysql_root_password,
     remove_default_accounts => true,
   }
 
@@ -30,9 +37,9 @@ class fake_sysops::profile::lamp_stack {
     php_enable => true,
   }
 
-  mysql::db {'test_database':
-    user      => 'php_user',
-    password  => 'less_super_secret',
+  mysql::db {"${database_name}":
+    user      => $database_user,
+    password  => $database_password,
     host      => 'localhost',
     grant     => ['ALL'],
     require   => Class['::mysql::server'],
@@ -50,7 +57,7 @@ class fake_sysops::profile::lamp_stack {
   }
 
   cron {'backup mysql':
-    command  => "mysqldump -u php_user -p='less_super_secret' -h localhost test_database > /root/backups_mysql/test_database.sql",
+    command  => "mysqldump -u ${database_user} -p='${database_password}' -h localhost ${database_name} > /root/backups_mysql/${database_name}.sql",
     user     => 'root',
     hour     => 2,
     require  => File['/root/backups_mysql/']

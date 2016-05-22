@@ -1,0 +1,6 @@
+<?php
+  mysql_connect('localhost', '<%= @database_user %>', '<%= @database_password %>') or die('Unable to connect to mysql server');
+  echo "Connected to MySQL Server\n";
+  mysql_select_db(<%= @database_name %>) or die('Unable to select database');
+  echo "Sucessfully selected database\n";
+?>
