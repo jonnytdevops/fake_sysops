@@ -50,3 +50,13 @@ r10k puppetfile install
 ```
 
 There are probably much better ways to manage your Puppetfile, however this is a quick way to get you started.
+
+## Bonus Material
+In addition to the services and configuration managed by Puppet, this module also provides some basic checks to let you test to see that the end state is as expected.
+
+You can run these checks as follows:
+
+```
+# Checks the output of the webpage configured by the lamp-stack profile
+/etc/checks/check_http.rb -s "localhost" -p 8080 -f index.php -c "Connected to MySQL Server","Sucessfully selected database"
+```
