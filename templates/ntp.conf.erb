@@ -1,0 +1,11 @@
+# NTP Configuration from Puppet ERB template
+
+<% [@ntp_servers].flatten.each do |server| -%>
+server <%= server %>
+<% end -%>
+
+<% unless [@restrict].empty? -%>
+<% [@restrict].flatten.each do |restriction| -%>
+restrict <%= restriction %>
+<% end -%>
+<% end -%>
