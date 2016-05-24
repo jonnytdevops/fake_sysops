@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 #
-# A script to check the output of a web page matches certain strings.
+# A script to check the output of a DNS server.
 # Author: jonnytpuppet
 
 require 'resolv'

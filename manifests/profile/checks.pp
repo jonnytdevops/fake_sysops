@@ -5,4 +5,9 @@ class fake_sysops::profile::checks {
     mode    => '755',
     recurse => true,
   }
+
+  package {'net-ntp':
+    ensure    => present,
+    provider  => gem,
+  }
 }

@@ -62,4 +62,7 @@ You can run these checks as follows:
 
 # Checks the DNS resolution of first.fakesysops.me
 /etc/checks/check_dns.rb -s 127.0.0.1 -d first.fakesysops.me -i 1.1.1.1
+
+# Checks the response from the local NTP server
+/etc/checks/check_ntp.rb -s 127.0.0.1
 ```
